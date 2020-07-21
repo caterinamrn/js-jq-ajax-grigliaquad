@@ -1,3 +1,4 @@
+// confronto il numero randomico con cinque e cambio il colore di sfondo della cella
 function confrontoCinque(selected,value) {
   var confronto = value<=5;
   if (confronto) {
@@ -8,13 +9,13 @@ function confrontoCinque(selected,value) {
   }
 }
 
-
+// numero random da 1 a 9
 function getRandomNum(selected) {
   $.ajax({
     url:"https://flynn.boolean.careers/exercises/api/random/int",
     method:"GET",
     success:function (data,state) {
-      // selected.children("span") == "";
+
       var success = data["success"];
       var value = data["response"];
 
@@ -34,7 +35,7 @@ function getRandomNum(selected) {
     }
   })
 }
-
+// seleziono la cella dove inserire il numero, ogni cella può essere selezionata solo 1 volta
 function selectCell(){
   var target = $("#tabella td");
   target.click(
@@ -42,11 +43,8 @@ function selectCell(){
       var selected = $(this);
       var contenuto = selected.children("span").text();
 
-      // template.find('#message-text').text(txt);
-      // console.log(contenuto);
-
       if (contenuto == "") {
-      console.log("è vuoto");
+      // console.log("è vuoto");
       getRandomNum(selected);
       }
 
