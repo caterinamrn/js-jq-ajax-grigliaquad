@@ -14,12 +14,12 @@ function getRandomNum(selected) {
     url:"https://flynn.boolean.careers/exercises/api/random/int",
     method:"GET",
     success:function (data,state) {
-      // selected.children("span") = "";
+      // selected.children("span") == "";
       var success = data["success"];
       var value = data["response"];
 
       if (success) {
-        console.log(data);
+        // console.log(data);
         selected.children("span").append(value);
         confrontoCinque(selected,value);
       }
@@ -40,7 +40,16 @@ function selectCell(){
   target.click(
     function () {
       var selected = $(this);
-      getRandomNum(selected)
+      var contenuto = selected.children("span").text();
+
+      // template.find('#message-text').text(txt);
+      // console.log(contenuto);
+
+      if (contenuto == "") {
+      console.log("è vuoto");
+      getRandomNum(selected);
+      }
+
       // console.log(selected);
     }
 
